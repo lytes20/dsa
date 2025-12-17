@@ -1,5 +1,4 @@
-import LinkedList from "./LinkedList";
-import Node from "./Node";
+import Node from "./LinkedList/Node";
 
 let getSum = (head: Node<number> | null) => {
   let ans = 0;
