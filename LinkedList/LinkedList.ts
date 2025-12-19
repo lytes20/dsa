@@ -1,13 +1,13 @@
 import Node from "./Node";
 
-class LinkedList {
-  head: Node<string> | null;
+class LinkedList<T> {
+  head: Node<T> | null;
 
-  constructor(head: Node<string>) {
+  constructor(head: Node<T>) {
     this.head = head;
   }
 
-  add(value: string): boolean {
+  add(value: T): boolean {
     const newNode = new Node(value);
     if (this.head == null) {
       this.head = newNode;
@@ -21,7 +21,15 @@ class LinkedList {
     return true;
   }
 
-  remove(value: string): boolean {
+  addNode(prevNode: Node<T>, newNode: Node<T>) {
+    if (!newNode) {
+      throw new Error("Please enter a valid node");
+    }
+    newNode.next = prevNode.next;
+    prevNode.next = newNode;
+  }
+
+  remove(value: T): boolean {
     if (this.head === null) {
       console.log("List is empty");
       return false;
@@ -48,7 +56,7 @@ class LinkedList {
     if (this.head == null) {
       return stringValue;
     }
-    let current: Node<string> | null = this.head;
+    let current: Node<T> | null = this.head;
     while (current != null) {
       stringValue = stringValue + current.val;
       if (current.next != null) {
