@@ -1,30 +1,49 @@
 name: CI
 
 on:
-    push:
-        branches: [main]
-    pull_request:
+  push:
+    branches: [main]
+  pull_request:
 
 jobs:
-    test:
-        runs-on: ubuntu-latest
+  test:
+    runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v4
+    steps:
+      - uses: actions/checkout@v4
 
-            - name: Use Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 20
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-            - name: Install dependencies
-              run: npm install
+      - name: Install dependencies
+        run: npm install
 
-            - name: Run tests with coverage
-              run: npm test
+      - name: Run tests with coverage
+        run: npm test
 
-            - name: Upload coverage artifact
-              uses: actions/upload-artifact@v4
-              with:
-                  name: coverage
-                  path: coverage
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage
+      - name: Extract coverage percentage
+        run: |
+          node -e "
+          const fs = require('fs');
+          const summary = require('./coverage/coverage-summary.json');
+          const pct = summary.total.lines.pct;
+          fs.writeFileSync('coverage.json', JSON.stringify({ coverage: pct }));
+          "
+      - name: Publish coverage badge data
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git checkout --orphan coverage
+          git rm -rf .
+          cp coverage.json .
+          git add coverage.json
+          git commit -m 'Update coverage'
+          git push -f origin coverage
