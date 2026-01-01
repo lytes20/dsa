@@ -23,11 +23,6 @@ jobs:
       - name: Run tests with coverage
         run: npm test
 
-      - name: Upload coverage artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage
-          path: coverage
       - name: Extract coverage percentage
         run: |
           node -e "
@@ -36,6 +31,7 @@ jobs:
           const pct = summary.total.lines.pct;
           fs.writeFileSync('coverage.json', JSON.stringify({ coverage: pct }));
           "
+
       - name: Publish coverage badge data
         if: github.ref == 'refs/heads/main'
         run: |
@@ -43,7 +39,6 @@ jobs:
           git config user.email github-actions@github.com
           git checkout --orphan coverage
           git rm -rf .
-          cp coverage.json .
           git add coverage.json
           git commit -m 'Update coverage'
           git push -f origin coverage
