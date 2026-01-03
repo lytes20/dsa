@@ -2,6 +2,7 @@ import reverseArray from "./Arrays";
 import Node from "./LinkedList/Node";
 import getMiddleNode from "./LinkedList/utils/middle";
 import reverse from "./LinkedList/utils/reverse";
+import swapPairs from "./LinkedList/utils/swapPairs";
 
 let getSum = (head: Node<number> | null) => {
   let ans = 0;
@@ -20,7 +21,8 @@ function main() {
     current.next = new Node<number>(nodesArray[i]);
     current = current.next;
   }
-  console.log(reverse(head));
+  console.log("" + head);
+  console.log("" + swapPairs(head));
 }
 
 main();
