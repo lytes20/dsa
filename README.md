@@ -8,6 +8,5 @@
 
 ### Examples of data structures
 
-- Strings
 - Arrays
 - LinkedLists
