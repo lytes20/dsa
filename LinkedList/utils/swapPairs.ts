@@ -10,7 +10,7 @@ function swapPairs<T>(head: Node<T> | null): Node<T> | null {
   let prev: Node<T> | null = null;
   while (current && current.next) {
     if (prev) {
-      prev.next = current.next; // Step 4
+      prev.next = current.next;
     }
     prev = current;
     const nextNode = current.next.next;
