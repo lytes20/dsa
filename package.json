@@ -4,6 +4,7 @@
   "main": "main.ts",
   "scripts": {
     "dev": "tsx main.ts",
+    "tsx": "tsx",
     "test": "jest --coverage"
   },
   "keywords": [],
