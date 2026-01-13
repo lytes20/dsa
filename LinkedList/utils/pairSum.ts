@@ -38,3 +38,30 @@
 
 //   return maxSum;
 // };
+
+var pairSum = function (head) {
+  let slow = head;
+  let fast = head;
+  while (fast && fast.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+
+  let nextNode = null;
+  let prev = null;
+  while (slow) {
+    nextNode = slow.next;
+    slow.next = prev;
+    prev = slow;
+    slow = nextNode;
+  }
+
+  let maxSum = 0;
+  let start = head;
+  while (prev != null) {
+    maxSum = Math.max(maxSum, start.value + prev.value);
+    prev = prev.next;
+    start = start.next;
+  }
+  return maxSum;
+};
