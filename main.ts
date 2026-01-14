@@ -1,8 +1,8 @@
 import reverseArray from "./Arrays";
-import Node from "./LinkedList/Node";
-import getMiddleNode from "./LinkedList/utils/middle";
-import reverse from "./LinkedList/utils/reverse";
-import swapPairs from "./LinkedList/utils/swapPairs";
+import Node from "./LinkedLists/Node";
+import getMiddleNode from "./LinkedLists/utils/middle";
+import reverse from "./LinkedLists/utils/reverse";
+import swapPairs from "./LinkedLists/utils/swapPairs";
 
 let getSum = (head: Node<number> | null) => {
   let ans = 0;
