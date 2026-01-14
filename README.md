@@ -1,6 +1,6 @@
 # Data Structures And Algorithms
 
-![CI](https://github.com/lytes20/dsa/actions/workflows/ci.yml/badge.svg)
+[![CI](https://github.com/lytes20/dsa/actions/workflows/ci.yml/badge.svg)](https://github.com/lytes20/dsa/actions/workflows/ci.yml)
 ![Coverage](https://img.shields.io/badge/dynamic/json?color=brightgreen&label=coverage&query=coverage&url=https://raw.githubusercontent.com/lytes20/dsa/coverage/coverage.json)
 
 ### What is a data structure?
