@@ -1,4 +1,4 @@
-import backspaceCompare from "./app/backspaceCompate";
+import backspaceCompare from "./app/backspaceCompare";
 
 const s = "y#fo##f",
   t = "y#f#o##f";
