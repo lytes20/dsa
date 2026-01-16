@@ -1,6 +1,6 @@
 import backspaceCompare from "./app/backspaceCompare";
 
-const s = "y#fo##f",
-  t = "y#f#o##f";
+const s = "abc###",
+  t = "a";
 const result = backspaceCompare(s, t);
 console.log(result);

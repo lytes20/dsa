@@ -29,7 +29,7 @@ describe("Test backspaceCompare function", () => {
 
   test("handles multiple consecutive backspaces", () => {
     expect(backspaceCompare("a##b", "b")).toBe(true);
-    expect(backspaceCompare("abc###", "a")).toBe(true);
+    expect(backspaceCompare("abc###", "a")).toBe(false);
   });
 
   test("handles strings that become empty after processing", () => {
