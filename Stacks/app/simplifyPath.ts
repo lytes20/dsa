@@ -1,25 +1,18 @@
 function simplifyPath(s: string): string {
   let sStack: string[] = [];
 
-  function stackPop() {
-    if (sStack.length > 0) {
-      sStack.pop();
+  const pathComponents: string[] = s.split("/");
+  for (let i = 0; i < pathComponents.length; i++) {
+    const component: string = pathComponents[i];
+    if (component === "..") {
+      if (sStack.length) {
+        sStack.pop();
+      }
+    } else if (component === "." || !component) {
+      continue;
+    } else {
+      sStack.push(component);
     }
   }
-  for (let i = 0; i < s.length; i++) {
-    const char = s[i];
-    switch (char) {
-      case ".":
-        stackPop();
-        break;
-      case "..":
-        stackPop();
-        stackPop();
-        break;
-
-      default:
-        break;
-    }
-  }
-  return "";
+  return "/" + sStack.join("/");
 }
